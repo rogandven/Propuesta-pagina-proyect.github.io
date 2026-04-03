@@ -28,6 +28,37 @@ const modules = [
   'Reportes de demanda y trazabilidad',
 ];
 
+const actors = [
+  {
+    role: 'Estudiantes y funcionarios',
+    action: 'Registran su perfil, asocian bicicleta y generan QR de acceso.',
+    value: 'Acceso mas rapido y menos repeticion de datos.',
+  },
+  {
+    role: 'Guardias de bicicletero',
+    action: 'Validan visualmente, escanean QR y aplican respaldo manual cuando corresponda.',
+    value: 'Control estandarizado con menor carga operativa.',
+  },
+  {
+    role: 'Administracion universitaria',
+    action: 'Consulta historial, incidencias, capacidad y trazabilidad por periodo.',
+    value: 'Datos para seguimiento y toma de decisiones.',
+  },
+  {
+    role: 'Seguridad institucional',
+    action: 'Monitorea eventos y revisa movimientos en situaciones excepcionales.',
+    value: 'Mayor capacidad de respuesta y auditoria.',
+  },
+];
+
+const businessRules = [
+  'Toda bicicleta operativa en el sistema debe quedar asociada a un usuario registrado.',
+  'El ingreso y retiro requieren validacion de guardia, incluso con uso de QR.',
+  'Si el QR falla o no hay bateria, se activa respaldo manual por RUT, nombre o datos de bicicleta.',
+  'Cada movimiento debe registrar fecha, hora, usuario, bicicleta, guardia y bicicletero.',
+  'El sistema debe registrar la condicion de seguridad al momento del ingreso (con o sin candado/U-Lock).',
+];
+
 const benchmark = [
   {
     name: 'UdeCMovil (U. de Concepcion)',
@@ -188,6 +219,8 @@ const references = [
         <a href="#problema">Problema</a>
         <a href="#solucion">Solucion</a>
         <a href="#modulos">Modulos</a>
+        <a href="#actores">Actores</a>
+        <a href="#reglas">Reglas</a>
         <a href="#comparativa">Comparativa</a>
         <a href="#metodologia">Metodologia</a>
         <a href="#impacto">Impacto</a>
@@ -270,6 +303,41 @@ const references = [
           </article>
         ))}
       </div>
+    </section>
+
+    <section id="actores" class="section container">
+      <div class="section-head">
+        <p class="tag">Actores del sistema</p>
+        <h2>Roles operativos que participan en el flujo diario de bicicleteros</h2>
+      </div>
+      <div class="grid two actors">
+        {actors.map((actor) => (
+          <article class="card actor-card">
+            <h3>{actor.role}</h3>
+            <p>
+              <strong>Rol operativo:</strong> {actor.action}
+            </p>
+            <p>
+              <strong>Valor esperado:</strong> {actor.value}
+            </p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section id="reglas" class="section container">
+      <div class="section-head">
+        <p class="tag">Reglas operativas</p>
+        <h2>Lineamientos funcionales que sostienen la trazabilidad del servicio</h2>
+      </div>
+      <ol class="rules">
+        {businessRules.map((rule, idx) => (
+          <li>
+            <span>{idx + 1}</span>
+            <p>{rule}</p>
+          </li>
+        ))}
+      </ol>
     </section>
 
     <section id="comparativa" class="section container">
@@ -693,6 +761,56 @@ const references = [
     color: var(--primary-strong);
   }
 
+  .actors {
+    align-items: stretch;
+  }
+
+  .actor-card {
+    display: grid;
+    gap: 0.6rem;
+  }
+
+  .actor-card strong {
+    color: var(--primary-strong);
+  }
+
+  .rules {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .rules li {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 0.9rem 1rem;
+    box-shadow: var(--shadow);
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.7rem;
+    align-items: start;
+  }
+
+  .rules span {
+    width: 1.65rem;
+    height: 1.65rem;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: var(--primary);
+    color: #fff;
+    font-size: 0.82rem;
+    font-weight: 700;
+  }
+
+  .rules p {
+    margin: 0;
+    color: var(--muted);
+  }
+
   .method-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -905,6 +1023,7 @@ const references = [
   .hero .stats,
   .section .section-head,
   .flow li,
+  .rules li,
   .card,
   .method-step,
   .timeline-item,
