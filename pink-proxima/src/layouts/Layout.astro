@@ -1,11 +1,11 @@
----
+﻿---
 interface Props {
   title?: string;
   description?: string;
 }
 
 const {
-  title = 'BiciUBB Control | Propuesta de Proyecto',
+  title = 'UBBike | Propuesta de Proyecto',
   description = 'Aplicacion multiplataforma para control y trazabilidad del ingreso y retiro de bicicletas en los bicicleteros de la Universidad del Bio-Bio.',
 } = Astro.props;
 ---
@@ -15,6 +15,12 @@ const {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
@@ -28,15 +34,15 @@ const {
 
 <style is:global>
   :root {
-    --bg: #f4f7fb;
-    --surface: #ffffff;
-    --ink: #111827;
-    --muted: #4b5563;
-    --primary: #0b4b6f;
-    --primary-strong: #06344e;
-    --accent: #199a8e;
-    --line: #d7deea;
-    --shadow: 0 14px 40px rgb(8 36 60 / 10%);
+    --bg: #0e2236;
+    --surface: #e7eef6;
+    --ink: #0b2f4a;
+    --muted: #35506a;
+    --primary: #0f5a8b;
+    --primary-strong: #0a2d4a;
+    --accent: #3dc2af;
+    --line: #b9cde0;
+    --shadow: 0 16px 40px rgb(10 45 74 / 12%);
     --radius: 18px;
   }
 
@@ -50,11 +56,11 @@ const {
     padding: 0;
     min-height: 100%;
     background:
-      radial-gradient(1200px 520px at 86% -10%, rgb(25 154 142 / 18%), transparent),
-      radial-gradient(900px 400px at -10% 10%, rgb(11 75 111 / 16%), transparent),
-      var(--bg);
-    color: var(--ink);
-    font-family: 'Segoe UI', 'Aptos', 'Helvetica Neue', Arial, sans-serif;
+      radial-gradient(1280px 660px at 105% -10%, rgb(61 194 175 / 16%), transparent),
+      radial-gradient(900px 460px at -15% 8%, rgb(15 90 139 / 26%), transparent),
+      linear-gradient(180deg, #0e2236 0%, #0c1d30 100%);
+    color: #e4f0fb;
+    font-family: 'Manrope', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
     line-height: 1.55;
     scroll-behavior: smooth;
   }
@@ -68,3 +74,4 @@ const {
     margin-inline: auto;
   }
 </style>
+

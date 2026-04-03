@@ -1,5 +1,5 @@
 ﻿export const metadatosPagina = {
-  title: 'BiciUBB Control | Propuesta de Proyecto',
+  title: 'UBBike | Propuesta de Proyecto',
   description:
     'Aplicacion multiplataforma para control y trazabilidad en bicicleteros de la Universidad del Bio-Bio.',
 };
@@ -26,6 +26,12 @@ export const enlacesNavegacion = [
   { href: '#impacto', label: 'Impacto' },
   { href: '#riesgo', label: 'Riesgo' },
   { href: '#referencias', label: 'Referencias' },
+];
+
+export const indicadoresHero = [
+  { etiqueta: 'Modalidad', valor: 'Desarrollo de Software' },
+  { etiqueta: 'Enfoque', valor: 'Control + trazabilidad con QR' },
+  { etiqueta: 'Contexto', valor: 'Bicicleteros UBB' },
 ];
 
 export const identidadProyecto = {
@@ -167,6 +173,39 @@ export const stackPropuesto = [
     option: 'Kotlin Multiplatform en primera instancia',
     reason:
       'La propuesta establece KMP como alternativa inicial, con posibilidad de ajustar stack segun requerimientos y complejidad del analisis.',
+  },
+];
+
+export const tecnologiasEvaluadas = [
+  {
+    nombre: 'Kotlin Multiplatform',
+    logo: '/logos/kotlin.svg',
+    descripcion: 'Base inicial planteada en la propuesta.',
+  },
+  {
+    nombre: 'Flutter',
+    logo: '/logos/flutter.svg',
+    descripcion: 'Alternativa para UI multiplataforma segun analisis.',
+  },
+  {
+    nombre: 'Dart',
+    logo: '/logos/dart.svg',
+    descripcion: 'Lenguaje asociado a Flutter para desarrollo movil.',
+  },
+  {
+    nombre: 'React Native',
+    logo: '/logos/react.svg',
+    descripcion: 'Opcion evaluable para clientes moviles.',
+  },
+  {
+    nombre: 'Expo',
+    logo: '/logos/expo.svg',
+    descripcion: 'Flujo de desarrollo sobre ecosistema React Native.',
+  },
+  {
+    nombre: 'JavaScript',
+    logo: '/logos/javascript.svg',
+    descripcion: 'Base del ecosistema web y alternativas de stack.',
   },
 ];
 
@@ -508,4 +547,28 @@ export const referenciasProyecto = [
     href: 'https://apps.apple.com/us/app/bikelink-bike-parking/id1501041932',
   },
 ];
+
+export const creditosVisuales = [
+  {
+    recurso: 'Logo oficial de la app UBBike',
+    fuente: 'Diseno propio',
+    href: '#inicio',
+  },
+  {
+    recurso: 'Foto real del bicicletero UBB (hero)',
+    fuente: 'Captura propia',
+    href: '#proyecto',
+  },
+  {
+    recurso: 'Foto de bicicleteros (contexto)',
+    fuente: 'Pixabay',
+    href: 'https://pixabay.com/photos/bike-racks-bike-bikes-bicycles-5604281/',
+  },
+  {
+    recurso: 'Logos de tecnologias',
+    fuente: 'Simple Icons',
+    href: 'https://simpleicons.org/',
+  },
+];
+
 

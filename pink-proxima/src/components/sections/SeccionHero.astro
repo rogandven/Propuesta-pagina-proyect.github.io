@@ -1,18 +1,55 @@
 ﻿---
+import { indicadoresHero } from '../../data/propuesta';
+
+const rutaConBase = (ruta: string) => `${import.meta.env.BASE_URL}${ruta.replace(/^\/+/, '')}`;
 ---
 
 <section class="hero container">
+  <div class="hero-grid">
+    <div class="hero-copy">
       <p class="eyebrow">Proyecto de titulacion IECI | Universidad del Bio-Bio</p>
-      <h1>Aplicacion de control y trazabilidad para bicicleteros UBB</h1>
+      <h1>UBBike: control y trazabilidad para bicicleteros UBB</h1>
       <p class="lead">
-        Propuesta para digitalizar el ingreso y retiro de bicicletas con identificacion QR,
+        UBBike propone digitalizar el ingreso y retiro de bicicletas con identificacion QR,
         validacion por guardia y gestion administrativa con trazabilidad.
       </p>
       <p class="status-note">Fuente: Propuesta presentada en marzo de 2026.</p>
 
+      <ul class="hero-kpis">
+        {indicadoresHero.map((item) => (
+          <li>
+            <span>{item.etiqueta}</span>
+            <strong>{item.valor}</strong>
+          </li>
+        ))}
+      </ul>
+
       <div class="hero-actions">
         <a class="btn btn-primary" href="#solucion">Ver solucion</a>
-        <a class="btn btn-outline" href="#roadmap">Ver plan 2026</a>
+        <a class="btn btn-outline" href="#stack">Ver stack</a>
       </div>
-    </section>
+    </div>
+
+    <div class="hero-media">
+      <figure class="hero-photo">
+        <img
+          src={rutaConBase('imagenes/bicicletero-real-ubb.png')}
+          alt="Bicicletero real de la Universidad del Bio-Bio en sector E2 Aulas"
+          loading="eager"
+          decoding="async"
+        />
+      </figure>
+
+      <article class="hero-overlay card">
+        <img
+          src={rutaConBase('imagenes/qr-ilustracion.svg')}
+          alt="Ilustracion de validacion por QR en dispositivo movil"
+          loading="lazy"
+          decoding="async"
+        />
+        <p>Validacion QR asistida por guardia y registro digital centralizado.</p>
+      </article>
+    </div>
+  </div>
+</section>
 
