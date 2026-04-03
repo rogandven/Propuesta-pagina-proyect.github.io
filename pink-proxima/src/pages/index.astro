@@ -110,6 +110,25 @@ const schedule = [
     focus: 'Pruebas integrales, ajustes finales, informe y defensa.',
   },
 ];
+
+const impact = [
+  {
+    metric: 'Atencion mas rapida',
+    detail: 'Menos tiempo por operacion gracias al QR y datos precargados del usuario.',
+  },
+  {
+    metric: 'Menor error humano',
+    detail: 'Validaciones digitales para evitar registros incompletos o inconsistentes.',
+  },
+  {
+    metric: 'Trazabilidad total',
+    detail: 'Cada movimiento queda asociado a usuario, bicicleta, guardia, fecha y hora.',
+  },
+  {
+    metric: 'Continuidad operativa',
+    detail: 'Estado del bicicletero visible en tiempo real, incluso con rotacion de guardias.',
+  },
+];
 ---
 
 <Layout
@@ -129,6 +148,7 @@ const schedule = [
         <a href="#modulos">Modulos</a>
         <a href="#comparativa">Comparativa</a>
         <a href="#metodologia">Metodologia</a>
+        <a href="#impacto">Impacto</a>
         <a href="#objetivos">Objetivos</a>
         <a href="#roadmap">Roadmap</a>
       </nav>
@@ -313,6 +333,37 @@ const schedule = [
           </article>
         ))}
       </div>
+    </section>
+
+    <section id="impacto" class="section container">
+      <div class="section-head">
+        <p class="tag">Impacto esperado</p>
+        <h2>Beneficios operativos y de gestion para la comunidad universitaria</h2>
+      </div>
+      <div class="grid two">
+        {impact.map((item) => (
+          <article class="card impact-card">
+            <h3>{item.metric}</h3>
+            <p>{item.detail}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="section container">
+      <article class="cta-panel">
+        <p class="tag">Cierre de propuesta</p>
+        <h2>BiciUBB Control plantea una evolucion digital realista del servicio actual</h2>
+        <p>
+          La propuesta prioriza reutilizar la infraestructura existente de bicicleteros, mantener
+          la validacion asistida por guardias y agregar trazabilidad digital para una gestion mas
+          segura, rapida y medible durante 2026.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#inicio">Volver al inicio</a>
+          <a class="btn btn-outline" href="#metodologia">Revisar metodologia</a>
+        </div>
+      </article>
     </section>
   </main>
 
@@ -674,6 +725,30 @@ const schedule = [
   .schedule p {
     margin: 0;
     color: var(--muted);
+  }
+
+  .impact-card h3 {
+    color: var(--primary-strong);
+  }
+
+  .cta-panel {
+    border-radius: calc(var(--radius) + 6px);
+    border: 1px solid rgb(11 75 111 / 20%);
+    background:
+      linear-gradient(180deg, rgb(255 255 255 / 95%), rgb(255 255 255 / 86%)),
+      linear-gradient(145deg, rgb(11 75 111 / 10%), rgb(25 154 142 / 12%));
+    box-shadow: var(--shadow);
+    padding: 1.45rem;
+  }
+
+  .cta-panel h2 {
+    max-width: 32ch;
+  }
+
+  .cta-panel p {
+    color: var(--muted);
+    max-width: 75ch;
+    margin: 0.9rem 0 0;
   }
 
   .site-footer {
