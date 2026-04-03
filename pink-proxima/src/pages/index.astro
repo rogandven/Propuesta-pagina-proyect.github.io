@@ -59,6 +59,55 @@ const businessRules = [
   'El sistema debe registrar la condicion de seguridad al momento del ingreso (con o sin candado/U-Lock).',
 ];
 
+const architectureLayers = [
+  {
+    layer: 'Experiencia de usuario',
+    description: 'Aplicacion movil para estudiantes/funcionarios y vista operativa para guardias.',
+  },
+  {
+    layer: 'Servicios de negocio',
+    description:
+      'Logica de ingreso/retiro, validacion QR, respaldo manual, control de estados e incidencias.',
+  },
+  {
+    layer: 'Trazabilidad y reportes',
+    description:
+      'Consolidacion de movimientos para historial, auditoria por guardia y analisis de demanda.',
+  },
+  {
+    layer: 'Persistencia de datos',
+    description:
+      'Almacenamiento estructurado de usuarios, bicicletas, accesos, observaciones y alertas.',
+  },
+];
+
+const proposedStack = [
+  {
+    block: 'Opcion 1 (prioridad alta)',
+    option: 'Flutter + Dart',
+    reason:
+      'Primera alternativa por su madurez multiplataforma, velocidad de desarrollo y consistencia visual en Android/iOS.',
+  },
+  {
+    block: 'Opcion 2 (prioridad media)',
+    option: 'Expo React Native + JavaScript',
+    reason:
+      'Segunda alternativa por su ecosistema amplio y facilidad de integracion con librerias para funcionalidades moviles.',
+  },
+  {
+    block: 'Opcion 3 (prioridad condicionada)',
+    option: 'Kotlin Multiplatform',
+    reason:
+      'Tercera alternativa para evaluar reutilizacion de logica entre plataformas cuando los requisitos tecnicos lo justifiquen.',
+  },
+  {
+    block: 'Criterio de seleccion',
+    option: 'Decision final segun requisitos del sistema',
+    reason:
+      'La eleccion definitiva del stack dependera del analisis funcional, no funcional y de restricciones detectadas durante el proyecto.',
+  },
+];
+
 const benchmark = [
   {
     name: 'UdeCMovil (U. de Concepcion)',
@@ -221,6 +270,8 @@ const references = [
         <a href="#modulos">Modulos</a>
         <a href="#actores">Actores</a>
         <a href="#reglas">Reglas</a>
+        <a href="#arquitectura">Arquitectura</a>
+        <a href="#stack">Stack</a>
         <a href="#comparativa">Comparativa</a>
         <a href="#metodologia">Metodologia</a>
         <a href="#impacto">Impacto</a>
@@ -338,6 +389,48 @@ const references = [
           </li>
         ))}
       </ol>
+    </section>
+
+    <section id="arquitectura" class="section container">
+      <div class="section-head">
+        <p class="tag">Arquitectura funcional</p>
+        <h2>Capas definidas para sostener operacion diaria y crecimiento del sistema</h2>
+      </div>
+      <div class="architecture">
+        {architectureLayers.map((item, idx) => (
+          <article class="arch-item">
+            <span class="arch-index">{idx + 1}</span>
+            <div>
+              <h3>{item.layer}</h3>
+              <p>{item.description}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section id="stack" class="section container">
+      <div class="section-head">
+        <p class="tag">Stack tecnologico propuesto</p>
+        <h2>Base tecnica preliminar alineada con alcance de titulacion 2026</h2>
+        <p class="stack-note">
+          La seleccion final del stack se tomara en funcion de los requisitos funcionales, no
+          funcionales y restricciones tecnicas detectadas en la etapa de analisis.
+        </p>
+      </div>
+      <div class="grid two">
+        {proposedStack.map((item) => (
+          <article class="card stack-card">
+            <h3>{item.block}</h3>
+            <p>
+              <strong>Propuesta:</strong> {item.option}
+            </p>
+            <p>
+              <strong>Justificacion:</strong> {item.reason}
+            </p>
+          </article>
+        ))}
+      </div>
     </section>
 
     <section id="comparativa" class="section container">
@@ -811,6 +904,63 @@ const references = [
     color: var(--muted);
   }
 
+  .architecture {
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .arch-item {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 0.9rem 1rem;
+    box-shadow: var(--shadow);
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.75rem;
+    align-items: start;
+    transition:
+      transform 180ms ease,
+      border-color 180ms ease;
+  }
+
+  .arch-item:hover {
+    transform: translateY(-3px);
+    border-color: rgb(11 75 111 / 35%);
+  }
+
+  .arch-index {
+    width: 1.7rem;
+    height: 1.7rem;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.82rem;
+    font-weight: 700;
+  }
+
+  .arch-item p {
+    margin: 0;
+    color: var(--muted);
+  }
+
+  .stack-card {
+    display: grid;
+    gap: 0.6rem;
+  }
+
+  .stack-card strong {
+    color: var(--primary-strong);
+  }
+
+  .stack-note {
+    margin: 0.8rem 0 0;
+    color: var(--muted);
+    max-width: 78ch;
+  }
+
   .method-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1024,6 +1174,7 @@ const references = [
   .section .section-head,
   .flow li,
   .rules li,
+  .arch-item,
   .card,
   .method-step,
   .timeline-item,
