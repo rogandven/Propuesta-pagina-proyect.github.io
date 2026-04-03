@@ -5,29 +5,52 @@ const logoUbbike = `${import.meta.env.BASE_URL}imagenes/ubbike-logo-transparente
 ---
 
 <header class="site-header">
-  <div class="container nav">
+  <div class="container nav-top">
     <a class="brand" href="#inicio">
       <img class="brand-logo" src={logoUbbike} alt="Logo UBBike" loading="eager" decoding="async" />
     </a>
 
-    <details class="menu-secciones">
-      <summary>Secciones</summary>
+    <button type="button" class="btn-nav-toggle" data-toggle-nav aria-controls="nav-secciones" aria-expanded="true">
+      Ocultar secciones
+    </button>
+  </div>
+
+  <div class="container nav-collapsible" id="nav-secciones">
       <nav aria-label="Secciones">
         {enlacesNavegacion.map((link) => (
           <a href={link.href}>{link.label}</a>
         ))}
       </nav>
-    </details>
   </div>
 </header>
 
 <script>
-  const menuSecciones = document.querySelector<HTMLDetailsElement>('.menu-secciones');
-  if (menuSecciones) {
-    menuSecciones.querySelectorAll('a').forEach((enlace) => {
+  const header = document.querySelector('.site-header');
+  const boton = document.querySelector('[data-toggle-nav]');
+  const panel = document.getElementById('nav-secciones');
+
+  if (header && boton && panel) {
+    const aplicarEstado = (colapsado) => {
+      header.classList.toggle('is-collapsed', colapsado);
+      boton.textContent = colapsado ? 'Mostrar secciones' : 'Ocultar secciones';
+      boton.setAttribute('aria-expanded', String(!colapsado));
+    };
+
+    boton.addEventListener('click', () => {
+      const colapsadoActual = header.classList.contains('is-collapsed');
+      aplicarEstado(!colapsadoActual);
+    });
+
+    panel.querySelectorAll('a').forEach((enlace) => {
       enlace.addEventListener('click', () => {
-        menuSecciones.removeAttribute('open');
+        if (window.matchMedia('(max-width: 980px)').matches) {
+          aplicarEstado(true);
+        }
       });
     });
+
+    if (window.matchMedia('(max-width: 980px)').matches) {
+      aplicarEstado(true);
+    }
   }
 </script>
