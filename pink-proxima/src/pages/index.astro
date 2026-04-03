@@ -92,6 +92,21 @@ const activities = [
   },
 ];
 
+const roadPhases = [
+  {
+    period: 'Abril - Julio',
+    focus: 'Definicion de requisitos, diseno UX y desarrollo del MVP multiplataforma.',
+  },
+  {
+    period: 'Agosto - Octubre',
+    focus: 'Integracion de historial, incidencias, trazabilidad y reportes administrativos.',
+  },
+  {
+    period: 'Noviembre - Diciembre',
+    focus: 'Pruebas finales, ajustes de integracion, informe final y defensa del proyecto.',
+  },
+];
+
 const schedule = [
   {
     period: 'Marzo - Abril 2026',
@@ -129,6 +144,33 @@ const impact = [
     detail: 'Estado del bicicletero visible en tiempo real, incluso con rotacion de guardias.',
   },
 ];
+
+const references = [
+  {
+    label: 'UdeC | Enrolamiento para bicicleteros',
+    href: 'https://vraeaweb.udec.cl/servicios/enrolamiento-para-bicicleteros/',
+  },
+  {
+    label: 'University of Houston | Bikeep CougarSAFE',
+    href: 'https://www.uh.edu/cougarsafe/bikeep/index.php',
+  },
+  {
+    label: 'UC Davis | Bicycle Program',
+    href: 'https://transportation.ucdavis.edu/bicycleprogram',
+  },
+  {
+    label: 'Bikeep | Smart bike parking platform',
+    href: 'https://bikeep.com/rent-smart-bike-parking-station',
+  },
+  {
+    label: 'App Store | UdeCMovil',
+    href: 'https://apps.apple.com/cl/app/udecm%C3%B3vil/id6670761228',
+  },
+  {
+    label: 'App Store | UH Go',
+    href: 'https://apps.apple.com/us/app/uh-go/id1350490089',
+  },
+];
 ---
 
 <Layout
@@ -151,6 +193,7 @@ const impact = [
         <a href="#impacto">Impacto</a>
         <a href="#objetivos">Objetivos</a>
         <a href="#roadmap">Roadmap</a>
+        <a href="#referencias">Referencias</a>
       </nav>
     </div>
   </header>
@@ -311,18 +354,15 @@ const impact = [
         <h2>Desarrollo incremental iterativo por etapas</h2>
       </div>
       <div class="timeline">
-        <article>
-          <h3>Abril - Julio</h3>
-          <p>Definicion de requisitos, diseno UX y desarrollo del MVP multiplataforma.</p>
-        </article>
-        <article>
-          <h3>Agosto - Octubre</h3>
-          <p>Integracion de historial, incidencias, trazabilidad y reportes administrativos.</p>
-        </article>
-        <article>
-          <h3>Noviembre - Diciembre</h3>
-          <p>Pruebas finales, ajustes de integracion, informe final y defensa del proyecto.</p>
-        </article>
+        {roadPhases.map((phase, idx) => (
+          <article class="timeline-item">
+            <span class="phase-index">{idx + 1}</span>
+            <div>
+              <h3>{phase.period}</h3>
+              <p>{phase.focus}</p>
+            </div>
+          </article>
+        ))}
       </div>
 
       <div class="schedule">
@@ -364,6 +404,21 @@ const impact = [
           <a class="btn btn-outline" href="#metodologia">Revisar metodologia</a>
         </div>
       </article>
+    </section>
+
+    <section id="referencias" class="section container">
+      <div class="section-head">
+        <p class="tag">Referencias principales</p>
+        <h2>Fuentes utilizadas para el analisis comparativo del proyecto</h2>
+      </div>
+      <div class="refs">
+        {references.map((ref, idx) => (
+          <a class="ref-item" href={ref.href} target="_blank" rel="noreferrer">
+            <span>[{idx + 1}]</span>
+            <p>{ref.label}</p>
+          </a>
+        ))}
+      </div>
     </section>
   </main>
 
@@ -691,16 +746,43 @@ const impact = [
 
   .timeline {
     display: grid;
-    gap: 0.9rem;
+    gap: 0.75rem;
+    position: relative;
   }
 
-  .timeline article {
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 14px;
+    top: 8px;
+    bottom: 8px;
+    width: 2px;
+    background: rgb(25 154 142 / 32%);
+  }
+
+  .timeline-item {
     background: var(--surface);
     border: 1px solid var(--line);
     border-radius: var(--radius);
     padding: 1rem 1.1rem;
     box-shadow: var(--shadow);
-    border-left: 6px solid rgb(25 154 142 / 70%);
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.75rem;
+    align-items: start;
+    margin-left: 0.25rem;
+  }
+
+  .phase-index {
+    width: 1.55rem;
+    height: 1.55rem;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: var(--accent);
+    color: white;
+    font-size: 0.78rem;
+    font-weight: 700;
   }
 
   .timeline p {
@@ -749,6 +831,44 @@ const impact = [
     color: var(--muted);
     max-width: 75ch;
     margin: 0.9rem 0 0;
+  }
+
+  .refs {
+    display: grid;
+    gap: 0.7rem;
+  }
+
+  .ref-item {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.7rem;
+    align-items: start;
+    text-decoration: none;
+    border-radius: 14px;
+    border: 1px solid var(--line);
+    background: var(--surface);
+    padding: 0.8rem 0.95rem;
+    box-shadow: var(--shadow);
+    transition:
+      transform 120ms ease,
+      border-color 120ms ease;
+  }
+
+  .ref-item:hover {
+    transform: translateY(-2px);
+    border-color: rgb(11 75 111 / 45%);
+  }
+
+  .ref-item span {
+    display: inline-flex;
+    font-weight: 700;
+    color: var(--primary);
+    margin-top: 0.12rem;
+  }
+
+  .ref-item p {
+    margin: 0;
+    color: var(--muted);
   }
 
   .site-footer {
