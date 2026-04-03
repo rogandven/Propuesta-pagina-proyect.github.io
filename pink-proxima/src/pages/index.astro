@@ -8,6 +8,17 @@ const painPoints = [
   'La operacion depende de la presencia del guardia y del traspaso informal de informacion.',
 ];
 
+const currentProcess = [
+  'Usuario llega al bicicletero con su bicicleta.',
+  'Solicita acceso al guardia asignado.',
+  'El guardia registra manualmente nombre, RUT, carrera/cargo y hora de ingreso.',
+  'Se solicita asegurar la bicicleta con cadena/candado o U-Lock.',
+  'Si no existe candado/U-Lock, el usuario deja la bicicleta bajo su responsabilidad.',
+  'Para retirar, el usuario vuelve al guardia para registrar hora de salida.',
+  'Si no hay guardia en el sector, se debe llamar a central para solicitar apoyo.',
+  'El control opera por turnos diurnos y vespertinos durante todo el dia.',
+];
+
 const workflow = [
   'Registro previo del usuario con sus datos institucionales.',
   'Registro de una o mas bicicletas asociadas al usuario.',
@@ -276,6 +287,7 @@ const references = [
 
       <nav aria-label="Secciones">
         <a href="#problema">Problema</a>
+        <a href="#proceso-actual">Proceso actual</a>
         <a href="#solucion">Solucion</a>
         <a href="#modulos">Modulos</a>
         <a href="#actores">Actores</a>
@@ -321,6 +333,21 @@ const references = [
           </article>
         ))}
       </div>
+    </section>
+
+    <section id="proceso-actual" class="section container">
+      <div class="section-head">
+        <p class="tag">Proceso actual</p>
+        <h2>Operacion manual vigente en bicicleteros UBB</h2>
+      </div>
+      <ol class="flow">
+        {currentProcess.map((step, idx) => (
+          <li>
+            <span>{idx + 1}</span>
+            <p>{step}</p>
+          </li>
+        ))}
+      </ol>
     </section>
 
     <section id="solucion" class="section container">
