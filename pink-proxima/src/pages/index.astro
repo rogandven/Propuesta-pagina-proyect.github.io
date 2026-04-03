@@ -63,6 +63,39 @@ const digitalRecordFields = [
   'Condicion de seguridad de la bicicleta',
 ];
 
+const userRegistrationFields = [
+  'RUT',
+  'Nombre',
+  'Apellidos',
+  'Carrera o cargo',
+  'Correo electronico',
+];
+
+const bikeRegistrationFields = [
+  'Tipo',
+  'Color',
+  'Marca',
+  'Modelo (opcional)',
+  'Caracteristicas distintivas (opcional)',
+  'Fotografia',
+];
+
+const bikeStatusOptions = [
+  'Se encuentra dentro del bicicletero',
+  'Fue retirada',
+  'Presenta observaciones',
+  'Fue ingresada sin proteccion antirrobo',
+];
+
+const adminQueries = [
+  'Historial de movimientos',
+  'Bicicletas actualmente dentro del bicicletero',
+  'Incidencias',
+  'Reportes de uso',
+  'Horarios de mayor demanda',
+  'Trazabilidad por guardia',
+];
+
 const modules = [
   'Registro previo de usuario',
   'Registro de bicicletas',
@@ -115,25 +148,66 @@ const benchmark = [
     name: 'UdeCMovil (Universidad de Concepcion)',
     model: 'Enrolamiento institucional + QR temporal para acceso.',
     userCost: 'Sin costo para comunidad interna.',
+    institutionalCost: 'No informado publicamente en las fuentes revisadas.',
+    rating: 'App Store: 2.3 de 5 (85 calificaciones).',
     fit: 'Integra bicicletero como parte de app institucional amplia.',
   },
   {
     name: 'UH Go + Bikeep (University of Houston)',
     model: 'App institucional integrada a racks inteligentes.',
     userCost: 'Sin costo para estudiantes, faculty y staff.',
+    institutionalCost: 'No informado publicamente en las fuentes revisadas.',
+    rating: 'App Store: 4.3 de 5 (146 valoraciones).',
     fit: 'Depende de infraestructura inteligente dedicada.',
   },
   {
     name: 'UC Davis Bicycle Program',
     model: 'Bike lockers y bike cages con modalidad de arriendo.',
     userCost: 'Servicio tarifado segun modalidad.',
+    institutionalCost: 'No informado publicamente en las fuentes revisadas.',
+    rating: 'No se reporta app especifica con valoracion publica comparable.',
     fit: 'Enfoque de almacenamiento con cobro.',
   },
   {
     name: 'Bikeep plataforma comercial',
     model: 'Solucion comercial hardware + software para operadores.',
     userCost: 'Variable segun operador y plan.',
+    institutionalCost: 'Tarifa institucional variable segun operador y configuracion.',
+    rating: 'App Store: 3.8 de 5 (17 valoraciones).',
     fit: 'Modelo comercial, no especifico al flujo UBB.',
+  },
+];
+
+const justificationHighlights = [
+  {
+    title: 'Problema de origen',
+    detail:
+      'El proceso actual opera en papel y depende completamente del guardia, con demoras, repeticion de datos y exposicion a errores en ingreso y retiro.',
+  },
+  {
+    title: 'Impacto en usuarios',
+    detail:
+      'Estudiantes y funcionarios repiten el mismo procedimiento en cada acceso, afectando tiempos y experiencia de uso.',
+  },
+  {
+    title: 'Impacto operativo',
+    detail:
+      'No existe registro digital persistente ni consulta en tiempo real para cambios de turno, incidentes o verificacion de estado.',
+  },
+  {
+    title: 'Diferencia de la propuesta UBB',
+    detail:
+      'La solucion se ajusta al flujo real del bicicletero UBB, reutiliza infraestructura existente y mantiene validacion asistida por guardias.',
+  },
+  {
+    title: 'Sostenibilidad y gradualidad',
+    detail:
+      'El documento destaca que la operacion requiere sostenibilidad y propone adopcion gradual para evitar alta inversion inicial en infraestructura inteligente.',
+  },
+  {
+    title: 'Resultado esperado',
+    detail:
+      'Reducir tiempos de atencion, disminuir errores, automatizar tareas repetitivas y mejorar trazabilidad del servicio.',
   },
 ];
 
@@ -144,6 +218,15 @@ const methodologySteps = [
   'Pruebas funcionales',
   'Evaluacion y ajustes',
   'Integracion con el sistema existente',
+];
+
+const methodologyReasons = [
+  'Permite construir el sistema por incrementos funcionales y validables.',
+  'Facilita detectar errores tempranamente y ajustar durante el desarrollo.',
+  'Se adapta mejor que cascada a cambios de requerimientos de multiples actores.',
+  'Reduce riesgo tecnico al integrar modulos de forma progresiva.',
+  'Entrega versiones parciales operativas en cada iteracion.',
+  'Favorece mejora continua con retroalimentacion constante.',
 ];
 
 const softwareGoal =
@@ -174,6 +257,66 @@ const activities = [
     name: 'Actividad 5',
     title: 'Integracion y evaluacion final',
     detail: 'Historial, incidencias, reportes, pruebas integrales e informe final.',
+  },
+];
+
+const activityBreakdown = [
+  {
+    title: 'Actividad 1 | Analisis del proceso actual',
+    tasks: [
+      '1.1 Revision del proceso actual de ingreso y retiro de bicicletas.',
+      '1.2 Identificacion de actores involucrados en el sistema actual.',
+      '1.3 Recopilacion de problemas, restricciones y debilidades del proceso manual.',
+      '1.4 Analisis de oportunidades de mejora en el control y registro de bicicletas.',
+    ],
+  },
+  {
+    title: 'Actividad 2 | Revision de soluciones similares',
+    tasks: [
+      '2.1 Revision de aplicaciones moviles y web similares en Google y Store.',
+      '2.2 Revision de soluciones universitarias chilenas y extranjeras relacionadas con bicicleteros.',
+      '2.3 Revision de plataformas externas orientadas a estacionamiento seguro de bicicletas.',
+      '2.4 Comparacion de funciones, caracteristicas, costos y valoracion de usuarios.',
+      '2.5 Identificacion de diferencias entre soluciones existentes y la propuesta del proyecto.',
+    ],
+  },
+  {
+    title: 'Actividad 3 | Definicion de requisitos del sistema',
+    tasks: [
+      '3.1 Recopilacion de necesidades de usuarios clave.',
+      '3.2 Identificacion de requisitos funcionales del sistema.',
+      '3.3 Identificacion de requisitos no funcionales del sistema.',
+      '3.4 Definicion de reglas de negocio para ingreso, permanencia y retiro de bicicletas.',
+      '3.5 Definicion de propuesta funcional preliminar del sistema.',
+      '3.6 Validacion de la propuesta funcional.',
+    ],
+  },
+  {
+    title: 'Actividad 4 | Desarrollo del producto minimo viable',
+    tasks: [
+      '4.1 Diseno de interfaces y flujo principal de uso.',
+      '4.2 Diseno de arquitectura preliminar del sistema.',
+      '4.3 Modelado de datos de usuarios, bicicletas e ingresos y retiros.',
+      '4.4 Implementacion del modulo de registro de usuarios.',
+      '4.5 Implementacion del modulo de registro de bicicletas.',
+      '4.6 Implementacion del modulo de generacion y validacion de QR.',
+      '4.7 Implementacion del control basico de ingreso y retiro.',
+      '4.8 Pruebas funcionales del producto minimo viable.',
+      '4.9 Ajustes y correcciones del producto minimo viable.',
+    ],
+  },
+  {
+    title: 'Actividad 5 | Integracion y evaluacion final del sistema',
+    tasks: [
+      '5.1 Diseno del modulo administrativo web.',
+      '5.2 Implementacion del historial de movimientos.',
+      '5.3 Implementacion del registro de incidencias.',
+      '5.4 Implementacion de funcionalidades de trazabilidad y reportes.',
+      '5.5 Pruebas integrales del sistema.',
+      '5.6 Ajustes finales de integracion.',
+      '5.7 Redaccion del informe final del proyecto.',
+      '5.8 Preparacion de la presentacion y defensa.',
+    ],
   },
 ];
 
@@ -294,8 +437,20 @@ const references = [
     href: 'https://noticias.udec.cl/udec-inaugura-bicicleteros-cerrados-y-con-altos-estandares-de-seguridad-en-dos-puntos-del-campus-concepcion/',
   },
   {
+    label: 'Noticias UdeC | Ahora es con eTudec',
+    href: 'https://noticias.udec.cl/ahora-es-con-etudec-comienza-marcha-blanca-de-nuevo-sistema-de-acceso-a-biblioteca-central/',
+  },
+  {
+    label: 'Apple App Store | UdeCMovil',
+    href: 'https://apps.apple.com/cl/app/udecm%C3%B3vil/id6670761228',
+  },
+  {
     label: 'University of Houston | Bikeep CougarSAFE',
     href: 'https://www.uh.edu/cougarsafe/bikeep/index.php',
+  },
+  {
+    label: 'Apple App Store | UH Go',
+    href: 'https://apps.apple.com/us/app/uh-go/id1350490089',
   },
   {
     label: 'UC Davis | Bicycle Program',
@@ -306,8 +461,24 @@ const references = [
     href: 'https://bikeep.com/rent-smart-bike-parking-station',
   },
   {
+    label: 'Apple App Store | Bikeep',
+    href: 'https://apps.apple.com/us/app/bikeep/id1320858642',
+  },
+  {
     label: 'University of Illinois | Register Your Bike',
     href: 'https://bike.illinois.edu/register-your-bike/',
+  },
+  {
+    label: 'University of Illinois | Bicycle Friendly University Application 2023',
+    href: 'https://icap.sustainability.illinois.edu/files/projectupdate/8756/Bicycle%20Friendly%20University%20Application%202023.pdf',
+  },
+  {
+    label: 'BikeLink | Getting Access Comparison',
+    href: 'https://www.bikelink.org/get_access',
+  },
+  {
+    label: 'Apple App Store | BikeLink Bike Parking',
+    href: 'https://apps.apple.com/us/app/bikelink-bike-parking/id1501041932',
   },
 ];
 ---
@@ -329,14 +500,17 @@ const references = [
         <a href="#proceso-actual">Proceso actual</a>
         <a href="#solucion">Solucion</a>
         <a href="#registro-digital">Registro digital</a>
+        <a href="#datos">Datos y control</a>
         <a href="#modulos">Modulos</a>
         <a href="#actores">Actores</a>
         <a href="#reglas">Reglas</a>
         <a href="#stack">Stack</a>
         <a href="#comparativa">Comparativa</a>
+        <a href="#justificacion">Justificacion</a>
         <a href="#objetivos">Objetivos</a>
         <a href="#objetivo-software">Objetivo software</a>
         <a href="#metodologia">Metodologia</a>
+        <a href="#subactividades">Subactividades</a>
         <a href="#roadmap">Roadmap</a>
         <a href="#programacion">Programacion</a>
         <a href="#impacto">Impacto</a>
@@ -450,6 +624,60 @@ const references = [
       </div>
     </section>
 
+    <section id="datos" class="section container">
+      <div class="section-head">
+        <p class="tag">Datos y control operativo</p>
+        <h2>Elementos funcionales declarados para usuarios, bicicletas y administracion</h2>
+      </div>
+      <div class="grid two">
+        <article class="card">
+          <h3>Datos de registro de usuario</h3>
+          <ul>
+            {userRegistrationFields.map((field) => (
+              <li>{field}</li>
+            ))}
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Datos de registro de bicicleta</h3>
+          <ul>
+            {bikeRegistrationFields.map((field) => (
+              <li>{field}</li>
+            ))}
+          </ul>
+        </article>
+      </div>
+
+      <div class="grid two section-gap">
+        <article class="card">
+          <h3>Estados del bicicletero</h3>
+          <ul>
+            {bikeStatusOptions.map((state) => (
+              <li>{state}</li>
+            ))}
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Consultas administrativas y reportes</h3>
+          <ul>
+            {adminQueries.map((query) => (
+              <li>{query}</li>
+            ))}
+          </ul>
+        </article>
+      </div>
+
+      <article class="card section-gap">
+        <h3>Respaldo manual y situaciones excepcionales</h3>
+        <p>
+          Si el usuario no dispone de celular, no tiene bateria o presenta problemas con el QR, el
+          guardia puede gestionar ingreso/retiro mediante busqueda por RUT, nombre o datos de la
+          bicicleta. Adicionalmente, la propuesta considera una opcion de solicitud de atencion
+          cuando el guardia no se encuentre temporalmente en el sector.
+        </p>
+      </article>
+    </section>
+
     <section id="modulos" class="section container">
       <div class="section-head">
         <p class="tag">Alcance funcional</p>
@@ -535,8 +763,29 @@ const references = [
               <strong>Costo usuario:</strong> {item.userCost}
             </p>
             <p>
+              <strong>Costo institucional:</strong> {item.institutionalCost}
+            </p>
+            <p>
+              <strong>Valoracion:</strong> {item.rating}
+            </p>
+            <p>
               <strong>Diferencia:</strong> {item.fit}
             </p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section id="justificacion" class="section container">
+      <div class="section-head">
+        <p class="tag">Justificacion del proyecto</p>
+        <h2>Fundamentos para digitalizar el control de bicicleteros UBB</h2>
+      </div>
+      <div class="grid two">
+        {justificationHighlights.map((item) => (
+          <article class="card justification-card">
+            <h3>{item.title}</h3>
+            <p>{item.detail}</p>
           </article>
         ))}
       </div>
@@ -602,6 +851,34 @@ const references = [
             <p class="activity-label">{act.name}</p>
             <h3>{act.title}</h3>
             <p>{act.detail}</p>
+          </article>
+        ))}
+      </div>
+
+      <article class="card section-gap">
+        <h3>Por que se usa el modelo incremental iterativo</h3>
+        <ul class="rationale-list">
+          {methodologyReasons.map((reason) => (
+            <li>{reason}</li>
+          ))}
+        </ul>
+      </article>
+    </section>
+
+    <section id="subactividades" class="section container">
+      <div class="section-head">
+        <p class="tag">Subactividades</p>
+        <h2>Detalle de ejecucion por actividad segun propuesta oficial</h2>
+      </div>
+      <div class="grid two">
+        {activityBreakdown.map((activity) => (
+          <article class="card subactivity-card">
+            <h3>{activity.title}</h3>
+            <ul>
+              {activity.tasks.map((task) => (
+                <li>{task}</li>
+              ))}
+            </ul>
           </article>
         ))}
       </div>
@@ -965,6 +1242,8 @@ const references = [
   .actor-card,
   .stack-card,
   .risk-card,
+  .justification-card,
+  .subactivity-card,
   .activity-card {
     display: grid;
     gap: 0.6rem;
@@ -1046,6 +1325,10 @@ const references = [
     margin: 0;
     padding-left: 1.2rem;
     color: var(--muted);
+  }
+
+  .rationale-list li + li {
+    margin-top: 0.38rem;
   }
 
   .timeline {
