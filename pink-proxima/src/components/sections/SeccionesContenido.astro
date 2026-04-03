@@ -1,0 +1,482 @@
+﻿---
+import {
+  identidadProyecto,
+  contextoInstitucional,
+  puntosCriticos,
+  procesoActual,
+  flujoPropuesto,
+  camposRegistroDigital,
+  camposRegistroUsuario,
+  camposRegistroBicicleta,
+  opcionesEstadoBicicleta,
+  consultasAdministrativas,
+  modulosPrincipales,
+  actoresSistema,
+  reglasNegocio,
+  stackPropuesto,
+  comparativaSoluciones,
+  puntosJustificacion,
+  objetivoSoftware,
+  pasosMetodologia,
+  actividadesProyecto,
+  razonesMetodologia,
+  desgloseActividades,
+  fasesRuta,
+  detalleProgramacion,
+  impactoEsperado,
+  caracterizacionProyecto,
+  referenciasProyecto,
+} from '../../data/propuesta';
+---
+<section id="proyecto" class="section container">
+      <div class="section-head">
+        <p class="tag">Identificacion del proyecto</p>
+        <h2>Titulo oficial y modalidad declarada en la propuesta</h2>
+      </div>
+      <div class="grid two">
+        <article class="card">
+          <h3>Titulo de la actividad de titulacion</h3>
+          <p>{identidadProyecto.title}</p>
+        </article>
+        <article class="card">
+          <h3>Modalidad de la propuesta</h3>
+          <p>{identidadProyecto.modality}</p>
+        </article>
+      </div>
+
+      <div class="section-head section-gap">
+        <p class="tag">Presentacion del area</p>
+        <h2>Contexto institucional donde se desarrolla la solucion</h2>
+      </div>
+      <div class="grid three">
+        {contextoInstitucional.map((item) => (
+          <article class="card">
+            <h3>{item.title}</h3>
+            <p>{item.detail}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section id="problema" class="section container">
+      <div class="section-head">
+        <p class="tag">Problematica</p>
+        <h2>Dependencia de registro manual y falta de trazabilidad operativa</h2>
+      </div>
+      <div class="grid two">
+        {puntosCriticos.map((item) => (
+          <article class="card">
+            <p>{item}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section id="proceso-actual" class="section container">
+      <div class="section-head">
+        <p class="tag">Proceso actual</p>
+        <h2>Operacion manual vigente en bicicleteros UBB</h2>
+      </div>
+      <ol class="flow">
+        {procesoActual.map((step, idx) => (
+          <li>
+            <span>{idx + 1}</span>
+            <p>{step}</p>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <section id="solucion" class="section container">
+      <div class="section-head">
+        <p class="tag">Solucion propuesta</p>
+        <h2>Flujo digital con QR y control asistido por guardias</h2>
+      </div>
+      <ol class="flow">
+        {flujoPropuesto.map((step, idx) => (
+          <li>
+            <span>{idx + 1}</span>
+            <p>{step}</p>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <section id="registro-digital" class="section container">
+      <div class="section-head">
+        <p class="tag">Registro digital</p>
+        <h2>Campos definidos para cada ingreso o retiro de bicicleta</h2>
+      </div>
+      <div class="record-grid">
+        {camposRegistroDigital.map((field) => (
+          <article class="card record-card">
+            <p>{field}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section id="datos" class="section container">
+      <div class="section-head">
+        <p class="tag">Datos y control operativo</p>
+        <h2>Elementos funcionales declarados para usuarios, bicicletas y administracion</h2>
+      </div>
+      <div class="grid two">
+        <article class="card">
+          <h3>Datos de registro de usuario</h3>
+          <ul>
+            {camposRegistroUsuario.map((field) => (
+              <li>{field}</li>
+            ))}
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Datos de registro de bicicleta</h3>
+          <ul>
+            {camposRegistroBicicleta.map((field) => (
+              <li>{field}</li>
+            ))}
+          </ul>
+        </article>
+      </div>
+
+      <div class="grid two section-gap">
+        <article class="card">
+          <h3>Estados del bicicletero</h3>
+          <ul>
+            {opcionesEstadoBicicleta.map((state) => (
+              <li>{state}</li>
+            ))}
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Consultas administrativas y reportes</h3>
+          <ul>
+            {consultasAdministrativas.map((query) => (
+              <li>{query}</li>
+            ))}
+          </ul>
+        </article>
+      </div>
+
+      <article class="card section-gap">
+        <h3>Respaldo manual y situaciones excepcionales</h3>
+        <p>
+          Si el usuario no dispone de celular, no tiene bateria o presenta problemas con el QR, el
+          guardia puede gestionar ingreso/retiro mediante busqueda por RUT, nombre o datos de la
+          bicicleta. Adicionalmente, la propuesta considera una opcion de solicitud de atencion
+          cuando el guardia no se encuentre temporalmente en el sector.
+        </p>
+      </article>
+    </section>
+
+    <section id="modulos" class="section container">
+      <div class="section-head">
+        <p class="tag">Alcance funcional</p>
+        <h2>Funciones principales definidas en la propuesta</h2>
+      </div>
+      <div class="grid three">
+        {modulosPrincipales.map((module) => (
+          <article class="card module">
+            <p>{module}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section id="actores" class="section container">
+      <div class="section-head">
+        <p class="tag">Actores</p>
+        <h2>Participantes del proceso de bicicleteros</h2>
+      </div>
+      <div class="grid two actors">
+        {actoresSistema.map((actor) => (
+          <article class="card actor-card">
+            <h3>{actor.role}</h3>
+            <p>
+              <strong>Funcion:</strong> {actor.action}
+            </p>
+            <p>
+              <strong>Aporte:</strong> {actor.value}
+            </p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section id="reglas" class="section container">
+      <div class="section-head">
+        <p class="tag">Reglas de operacion</p>
+        <h2>Lineamientos funcionales del control de ingreso y retiro</h2>
+      </div>
+      <ol class="rules">
+        {reglasNegocio.map((rule, idx) => (
+          <li>
+            <span>{idx + 1}</span>
+            <p>{rule}</p>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <section id="stack" class="section container">
+      <div class="section-head">
+        <p class="tag">Stack propuesto</p>
+        <h2>Tecnologia indicada en la propuesta de titulacion</h2>
+      </div>
+      <div class="grid two">
+        {stackPropuesto.map((item) => (
+          <article class="card stack-card">
+            <h3>{item.block}</h3>
+            <p>
+              <strong>Base tecnica:</strong> {item.option}
+            </p>
+            <p>
+              <strong>Nota:</strong> {item.reason}
+            </p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section id="comparativa" class="section container">
+      <div class="section-head">
+        <p class="tag">Comparativa</p>
+        <h2>Analisis de soluciones universitarias y externas</h2>
+      </div>
+      <div class="grid two comparison">
+        {comparativaSoluciones.map((item) => (
+          <article class="card comparison-item">
+            <h3>{item.name}</h3>
+            <p>
+              <strong>Modelo:</strong> {item.model}
+            </p>
+            <p>
+              <strong>Costo usuario:</strong> {item.userCost}
+            </p>
+            <p>
+              <strong>Costo institucional:</strong> {item.institutionalCost}
+            </p>
+            <p>
+              <strong>Valoracion:</strong> {item.rating}
+            </p>
+            <p>
+              <strong>Diferencia:</strong> {item.fit}
+            </p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section id="justificacion" class="section container">
+      <div class="section-head">
+        <p class="tag">Justificacion del proyecto</p>
+        <h2>Fundamentos para digitalizar el control de bicicleteros UBB</h2>
+      </div>
+      <div class="grid two">
+        {puntosJustificacion.map((item) => (
+          <article class="card justification-card">
+            <h3>{item.title}</h3>
+            <p>{item.detail}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section id="objetivos" class="section container">
+      <div class="section-head">
+        <p class="tag">Objetivos</p>
+        <h2>Objetivo general y objetivos especificos del proyecto</h2>
+      </div>
+      <div class="grid two">
+        <article class="card">
+          <h3>Objetivo general</h3>
+          <p>
+            Analizar, disenar e implementar una solucion software multiplataforma para optimizar el
+            control de ingreso y retiro de bicicletas en los bicicleteros UBB.
+          </p>
+        </article>
+        <article class="card">
+          <h3>Objetivos especificos</h3>
+          <ul>
+            <li>Analizar proceso actual, actores y debilidades.</li>
+            <li>Investigar y comparar soluciones existentes.</li>
+            <li>Definir requisitos y reglas de negocio.</li>
+            <li>Implementar MVP durante el primer semestre.</li>
+            <li>Integrar funciones complementarias en segundo semestre.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="objetivo-software" class="section container">
+      <div class="section-head">
+        <p class="tag">Objetivo general del software</p>
+        <h2>Resultado esperado del sistema para el servicio de bicicleteros UBB</h2>
+      </div>
+      <article class="card software-goal">
+        <p>{objetivoSoftware}</p>
+      </article>
+    </section>
+
+    <section id="metodologia" class="section container">
+      <div class="section-head">
+        <p class="tag">Metodologia</p>
+        <h2>Modelo incremental iterativo definido en la propuesta</h2>
+      </div>
+      <div class="method-grid">
+        {pasosMetodologia.map((step, idx) => (
+          <article class="method-step">
+            <span>{idx + 1}</span>
+            <p>{step}</p>
+          </article>
+        ))}
+      </div>
+
+      <div class="section-head section-gap">
+        <p class="tag">Actividades</p>
+        <h2>Plan de ejecucion por bloques de trabajo</h2>
+      </div>
+      <div class="grid two">
+        {actividadesProyecto.map((act) => (
+          <article class="card activity-card">
+            <p class="activity-label">{act.name}</p>
+            <h3>{act.title}</h3>
+            <p>{act.detail}</p>
+          </article>
+        ))}
+      </div>
+
+      <article class="card section-gap">
+        <h3>Por que se usa el modelo incremental iterativo</h3>
+        <ul class="rationale-list">
+          {razonesMetodologia.map((reason) => (
+            <li>{reason}</li>
+          ))}
+        </ul>
+      </article>
+    </section>
+
+    <section id="subactividades" class="section container">
+      <div class="section-head">
+        <p class="tag">Subactividades</p>
+        <h2>Detalle de ejecucion por actividad segun propuesta oficial</h2>
+      </div>
+      <div class="grid two">
+        {desgloseActividades.map((activity) => (
+          <article class="card subactivity-card">
+            <h3>{activity.title}</h3>
+            <ul>
+              {activity.tasks.map((task) => (
+                <li>{task}</li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section id="roadmap" class="section container">
+      <div class="section-head">
+        <p class="tag">Programacion temporal</p>
+        <h2>Fases principales de trabajo para 2026</h2>
+      </div>
+      <div class="timeline">
+        {fasesRuta.map((phase, idx) => (
+          <article class="timeline-item">
+            <span class="phase-index">{idx + 1}</span>
+            <div>
+              <h3>{phase.period}</h3>
+              <p>{phase.focus}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section id="programacion" class="section container">
+      <div class="section-head">
+        <p class="tag">Programacion temporal detallada</p>
+        <h2>Calendario de actividades segun tabla oficial de la propuesta</h2>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Etapa</th>
+              <th>Actividad</th>
+              <th>Inicio</th>
+              <th>Termino</th>
+              <th>Duracion (dias)</th>
+            </tr>
+          </thead>
+          <tbody>
+            {detalleProgramacion.map((row) => (
+              <tr>
+                <td>{row.stage}</td>
+                <td>{row.activity}</td>
+                <td>{row.start}</td>
+                <td>{row.end}</td>
+                <td>{row.days}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="impacto" class="section container">
+      <div class="section-head">
+        <p class="tag">Beneficios esperados</p>
+        <h2>Resultados declarados en la justificacion del proyecto</h2>
+      </div>
+      <div class="grid two">
+        {impactoEsperado.map((item) => (
+          <article class="card impact-card">
+            <h3>{item.metric}</h3>
+            <p>{item.detail}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section id="riesgo" class="section container">
+      <div class="section-head">
+        <p class="tag">Caracterizacion y riesgo</p>
+        <h2>El proyecto se clasifica con nivel de riesgo medio</h2>
+      </div>
+      <div class="grid two risks">
+        {caracterizacionProyecto.map((item) => (
+          <article class="card risk-card">
+            <div class="risk-top">
+              <h3>{item.item}</h3>
+              <span class="risk-level">{item.level}</span>
+            </div>
+            <p>{item.description}</p>
+          </article>
+        ))}
+      </div>
+      <article class="risk-summary">
+        <p>
+          La propuesta concluye riesgo medio y valida el uso de metodologia incremental iterativa
+          para reducir riesgos, validar temprano y ajustar en cada iteracion.
+        </p>
+      </article>
+    </section>
+
+    <section id="referencias" class="section container">
+      <div class="section-head">
+        <p class="tag">Referencias</p>
+        <h2>Fuentes declaradas para el analisis de antecedentes</h2>
+      </div>
+      <div class="refs">
+        {referenciasProyecto.map((ref, idx) => (
+          <a class="ref-item" href={ref.href} target="_blank" rel="noreferrer">
+            <span>[{idx + 1}]</span>
+            <p>{ref.label}</p>
+          </a>
+        ))}
+      </div>
+    </section>
+
+
