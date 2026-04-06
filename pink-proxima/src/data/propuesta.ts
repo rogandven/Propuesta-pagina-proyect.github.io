@@ -62,7 +62,7 @@ export const puntosCriticos = [
   'El registro manual en papel genera lentitud en horarios de alta demanda.',
   'El proceso actual esta expuesto a error humano en ingreso y salida.',
   'No existe trazabilidad centralizada en tiempo real del estado del bicicletero.',
-  'La operacion depende de la presencia del guardia y del traspaso informal de informacion.',
+  'La operación depende de la presencia del guardia y del traspaso informal de informacion.',
 ];
 
 export const procesoActual = [
@@ -141,7 +141,7 @@ export const modulosPrincipales = [
   'Validación asistida por guardia',
   'Registro digital de ingreso y salida',
   'Control de estado de cada bicicletero',
-  'Operacion manual de respaldo',
+  'Operación manual de respaldo',
   'Gestion administrativa y reportes',
   'Atencion de situaciones excepcionales',
 ];
@@ -273,7 +273,7 @@ export const puntosJustificacion = [
   {
     title: 'Sostenibilidad y gradualidad',
     detail:
-      'El documento destaca que la operacion requiere sostenibilidad y propone adopcion gradual para evitar alta inversion inicial en infraestructura inteligente.',
+      'El documento destaca que la operación requiere sostenibilidad y propone adopcion gradual para evitar alta inversion inicial en infraestructura inteligente.',
   },
   {
     title: 'Resultado esperado',
