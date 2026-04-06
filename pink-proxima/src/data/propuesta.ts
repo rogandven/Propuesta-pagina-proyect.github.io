@@ -80,7 +80,7 @@ export const flujoPropuesto = [
   'Registro previo del usuario con sus datos institucionales.',
   'Registro de una o mas bicicletas asociadas al usuario.',
   'Generacion de codigo QR para ingreso y retiro.',
-  'Validacion por guardia mediante escaneo QR y verificacion visual.',
+  'Validación por guardia mediante escaneo QR y verificacion visual.',
   'Registro digital de fecha, hora, usuario, bicicleta, guardia y observaciones.',
   'Consulta administrativa de historial, incidencias, reportes y demanda.',
 ];
@@ -138,7 +138,7 @@ export const modulosPrincipales = [
   'Registro previo de usuario',
   'Registro de bicicletas',
   'Generacion de codigo QR',
-  'Validacion asistida por guardia',
+  'Validación asistida por guardia',
   'Registro digital de ingreso y salida',
   'Control de estado de cada bicicletero',
   'Operacion manual de respaldo',
@@ -359,7 +359,7 @@ export const desgloseActividades = [
       '3.3 Identificacion de requisitos no funcionales del sistema.',
       '3.4 Definicion de reglas de negocio para ingreso, permanencia y retiro de bicicletas.',
       '3.5 Definicion de propuesta funcional preliminar del sistema.',
-      '3.6 Validacion de la propuesta funcional.',
+      '3.6 Validación de la propuesta funcional.',
     ],
   },
   {
