@@ -1,0 +1,25 @@
+---
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+    iconName?: string;
+    title: string;
+    description: string;
+}
+
+const { 
+    iconName = "",
+    title = "Título",
+    description = "Descripción",
+} = Astro.props;
+---
+
+<article class="card">
+    <h3>
+        {
+            iconName && <span><Icon name={iconName}/></span>
+        }
+        {title}
+    </h3>
+    <p>{description}</p>
+</article>

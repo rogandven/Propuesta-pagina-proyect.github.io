@@ -15,7 +15,9 @@ const enlacePresentacion = `${import.meta.env.BASE_URL}presentacion/`;
 <header class="site-header">
   <div class="container nav-top">
     <a class="brand" href={enlacePropuesta}>
+      <!-- 
       <img class="brand-logo" src={logoUbbike} alt="Logo UBBike" loading="eager" decoding="async" />
+      -->
     </a>
 
     <nav class="modos-app" aria-label="Apartados principales del sitio">
@@ -59,7 +61,7 @@ const enlacePresentacion = `${import.meta.env.BASE_URL}presentacion/`;
   const panel = document.getElementById('nav-secciones');
 
   if (header && boton && panel) {
-    const aplicarEstado = (colapsado) => {
+    const aplicarEstado = (colapsado : any) => {
       header.classList.toggle('is-collapsed', colapsado);
       boton.textContent = colapsado ? 'Mostrar secciones' : 'Ocultar secciones';
       boton.setAttribute('aria-expanded', String(!colapsado));

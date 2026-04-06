@@ -31,6 +31,9 @@ import {
   creditosVisuales,
 } from '../../data/propuesta';
 
+import { Icon } from "astro-icon/components";
+import CardComponent from '../cards/CardComponent.astro';
+
 const rutaConBase = (ruta: string) => `${import.meta.env.BASE_URL}${ruta.replace(/^\/+/, '')}`;
 ---
 <section id="proyecto" class="section container">
@@ -39,14 +42,16 @@ const rutaConBase = (ruta: string) => `${import.meta.env.BASE_URL}${ruta.replace
         <h2>Título oficial y modalidad declarada en la propuesta</h2>
       </div>
       <div class="grid two">
-        <article class="card">
-          <h3>Título de la actividad de titulacion</h3>
-          <p>{identidadProyecto.title}</p>
-        </article>
-        <article class="card">
-          <h3>Modalidad de la propuesta</h3>
-          <p>{identidadProyecto.modality}</p>
-        </article>
+        <CardComponent 
+          iconName='mdi:book' 
+          title='Título de la actividad de titulacion' 
+          description={identidadProyecto.title}
+        />
+        <CardComponent 
+          iconName='mdi:sync' 
+          title='Modalidad de la propuesta' 
+          description={identidadProyecto.modality}
+        />        
       </div>
 
       <div class="section-head section-gap">
